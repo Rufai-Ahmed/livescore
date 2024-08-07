@@ -1,0 +1,74 @@
+{
+  "data": [
+    {
+      "id": 38393939,
+      "name": "AD",
+      "address": "jjn",
+      "number": "07067128261",
+      "members": [
+        {
+          "name": "Rufai Hammed",
+          "address": "3, Otakoya Street",
+          "number": "72282882822",
+          "id": 1717938991466
+        },
+        {
+          "name": "Rufai Hammed",
+          "address": "3, Otakoya Street",
+          "number": "72282882822",
+          "id": 1717939004618
+        },
+        {
+          "name": "Rufai Ahmed",
+          "address": "3, Otakoya Street",
+          "number": "08084845119",
+          "id": 1717939702621
+        },
+        {
+          "name": "Rufai Ahmed",
+          "address": "3, Otakoya Street",
+          "number": "08084845119",
+          "id": 1717939843959
+        },
+        {
+          "name": "Rufai Ahmed",
+          "address": "3, Otakoya Street",
+          "number": "08084845119",
+          "id": 1717939860954
+        },
+        {
+          "name": "Rufai Ahmed",
+          "address": "3, Otakoya Street",
+          "number": "08084845119",
+          "id": 1717940099458
+        }
+      ]
+    },
+    {
+      "name": "Rufai Ahmed",
+      "address": "3, Otakoya Street",
+      "number": "08084845119",
+      "id": 1717887561723,
+      "members": [
+        {
+          "name": "Rufai Ahmed",
+          "address": "3, Otakoya Street",
+          "number": "08084845119",
+          "id": 1717934544013
+        },
+        {
+          "name": "Rufai Ahmed",
+          "address": "3, Otakoya Street",
+          "number": "08084845119",
+          "id": 1717939035609
+        }
+      ]
+    },
+    {
+      "name": "eClass",
+      "address": "3, Otakoya Street",
+      "number": "08084845119",
+      "id": 1717943362013
+    }
+  ]
+}
