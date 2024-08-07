@@ -103,7 +103,7 @@ const Page = () => {
 							<div className="flex gap-4 h-full items-center">
 								<div className="w-2 rounded-r-lg bg-orange-500 h-[90%] " />
 								<div className="flex flex-col justify-between text-[18px]">
-									61'
+									61&apos;
 								</div>
 
 								<div className="flex flex-col justify-between">
