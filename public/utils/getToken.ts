@@ -1,5 +1,7 @@
 import { store } from "@/public/utils/store";
+import { useSelector } from "react-redux";
 export const getToken = () => {
-  const state: any = store.getState();
-  return state.auth.refresh;
+	const state = JSON.parse(localStorage.getItem("token")!);
+
+	return state;
 };
