@@ -94,8 +94,8 @@ const Dashboard: React.FC = () => {
 							className="mx-auto mb-2"
 						/>
 						<h2 className="text-xl font-semibold">HENADO FC</h2>
-						<p>Isaac A. ⚽ 6'</p>
-						<p>Isaac A. ⚽ 6'</p>
+						<p>Isaac A. ⚽ 6&apos;</p>
+						<p>Isaac A. ⚽ 6&apos;</p>
 					</div>
 
 					<div className="flex flex-col justify-center text-center">
@@ -110,7 +110,7 @@ const Dashboard: React.FC = () => {
 							className="mx-auto mb-2"
 						/>
 						<h2 className="text-xl font-semibold">GREEN HENADO FC</h2>
-						<p>James Z. ⚽ 8'</p>
+						<p>James Z. ⚽ 8&apos;</p>
 					</div>
 				</div>
 			</div>
