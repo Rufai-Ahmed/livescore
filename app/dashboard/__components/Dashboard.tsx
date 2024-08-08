@@ -36,6 +36,9 @@ const Dashboard: React.FC = () => {
 		rating: 0,
 		logo: "",
 	});
+	const [uploadOption, setUploadOption] = useState<"url" | "file">(
+		"url"
+	);
 
 	const handleAddTeam = () => {
 		setIsModalOpen(true);
@@ -54,6 +57,19 @@ const Dashboard: React.FC = () => {
 			rating: 0,
 			logo: "",
 		});
+	};
+
+	const handleImageUpload = (
+		event: React.ChangeEvent<HTMLInputElement>
+	) => {
+		if (event.target.files && event.target.files[0]) {
+			const file = event.target.files[0];
+			const reader = new FileReader();
+			reader.onloadend = () => {
+				setNewTeam({ ...newTeam, logo: reader.result as string });
+			};
+			reader.readAsDataURL(file);
+		}
 	};
 
 	return (
@@ -246,16 +262,49 @@ const Dashboard: React.FC = () => {
 						>
 							<div className="mb-4">
 								<label className="block mb-2 text-sm font-medium text-gray-700">
-									Team Logo URL
+									Upload Image
 								</label>
-								<input
-									type="text"
-									value={newTeam.logo}
-									onChange={(e) =>
-										setNewTeam({ ...newTeam, logo: e.target.value })
-									}
-									className="w-full px-3 py-2 border rounded-md"
-								/>
+								<div className="flex space-x-4 mb-2">
+									<button
+										type="button"
+										onClick={() => setUploadOption("url")}
+										className={`px-4 py-2 rounded-md ${
+											uploadOption === "url"
+												? "bg-blue-500 text-white"
+												: "bg-gray-200"
+										}`}
+									>
+										Use Image URL
+									</button>
+									<button
+										type="button"
+										onClick={() => setUploadOption("file")}
+										className={`px-4 py-2 rounded-md ${
+											uploadOption === "file"
+												? "bg-blue-500 text-white"
+												: "bg-gray-200"
+										}`}
+									>
+										Upload from Device
+									</button>
+								</div>
+								{uploadOption === "url" ? (
+									<input
+										type="text"
+										value={newTeam.logo}
+										onChange={(e) =>
+											setNewTeam({ ...newTeam, logo: e.target.value })
+										}
+										className="w-full px-3 py-2 border rounded-md"
+										placeholder="Enter image URL"
+									/>
+								) : (
+									<input
+										type="file"
+										onChange={handleImageUpload}
+										className="w-full"
+									/>
+								)}
 							</div>
 							<div className="mb-4">
 								<label className="block mb-2 text-sm font-medium text-gray-700">
