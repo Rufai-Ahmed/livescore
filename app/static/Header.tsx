@@ -1,9 +1,12 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import { useProfileQuery } from "@/public/utils/authApi";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
 	const { data, isLoading, error } = useProfileQuery();
+	const path = usePathname();
 
 	if (isLoading)
 		return (
@@ -13,6 +16,8 @@ const Header = () => {
 		);
 
 	console.log(data, error);
+
+	if (path.includes("dashboard")) return null;
 
 	return (
 		<center className="w-full flex justify-center">
@@ -39,10 +44,12 @@ const Header = () => {
 							className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
 						>
 							<li>
-								<a className="justify-between">Profile</a>
-							</li>
-							<li>
-								<a>Settings</a>
+								<Link
+									href="/dashboard"
+									className="justify-between"
+								>
+									Settings
+								</Link>
 							</li>
 							<li>
 								<a>Logout</a>

@@ -47,7 +47,7 @@ const Sidebar: React.FC = () => {
 										className={`flex items-center p-2 mt-[8px] border rounded-lg cursor-pointer ${
 											pathname === item.name
 												? "bg-green-100"
-												: "hover:bg-green-100"
+												: "hover:bg-orange-100"
 										}`}
 									>
 										<span className="text-orange-500 mr-2">

@@ -1,27 +1,15 @@
 "use client";
-import Card, { iCard } from "@/app/components/Card";
 import React from "react";
-import {
-	BiBall,
-	BiMenu,
-	BiNews,
-	BiShoppingBag,
-} from "react-icons/bi";
+import { iCard } from "@/app/components/Card";
+import Header from "./static/SmallHeader"; // Import the Header component
+import Sidebar from "./components/PageSidebar";
+import ContentSwitcher from "./components/Switcher";
+import { BiShoppingBag } from "react-icons/bi";
 import { FaAngleRight, FaBoxesStacked } from "react-icons/fa6";
 import { GoListOrdered } from "react-icons/go";
 import { VscListOrdered } from "react-icons/vsc";
-// import PieCharts from "./components/Pie";
-// import { BarChart } from "./components/Bar";
-import LineChart from "./components/Line";
-import Header from "./static/Header";
-import {
-	BsArrowDownCircle,
-	BsStar,
-	BsStarHalf,
-} from "react-icons/bs";
+import { BsStarHalf } from "react-icons/bs";
 import { GiSoccerBall } from "react-icons/gi";
-import Sidebar from "./components/PageSidebar";
-import ContentSwitcher from "./components/Switcher";
 import { GrStarOutline } from "react-icons/gr";
 
 const Page = () => {
@@ -51,38 +39,20 @@ const Page = () => {
 	];
 
 	return (
-		<main className="w-full flex justify-center items-end min-h-screen ">
-			<div className="w-full md:w-[90%] min-h-screen bg-white mt-2 shadow-lg ">
-				<div className="w-full border-b flex items-center justify-between p-2">
-					<div className="flex items-center gap-4">
-						<BiMenu size={20} />
-						LiveScore
-					</div>
+		<main className="w-full flex justify-center items-end min-h-screen">
+			<div className="w-full md:w-[90%] min-h-screen bg-white mt-2 shadow-lg">
+				{/* Header */}
+				<Header />
 
-					<div className="flex items-center gap-8">
-						<div className="flex items-center gap-2 ">
-							<GiSoccerBall size={20} />
-							<p>Scores</p>
-						</div>
-						<div className="flex items-center gap-2 ">
-							<BsStar size={20} />
-							<p>Favourites</p>
-						</div>
-						<div className="flex items-center gap-2 ">
-							<BiNews size={20} />
-							<p>News</p>
-						</div>
-					</div>
-				</div>
-
+				{/* Rest of the Page Content */}
 				<div className="flex items-start">
 					<div className="w-[200px]">
 						<Sidebar />
 					</div>
 
-					<div className="lg:w-[calc(100%-200px)] w-full px-8 mt-10 ">
+					<div className="lg:w-[calc(100%-200px)] w-full px-8 mt-10">
 						<ContentSwitcher />
-						<div className="flex items-center  justify-between">
+						<div className="flex items-center justify-between">
 							<div className="flex items-center gap-4">
 								<GiSoccerBall size={26} />
 
@@ -91,7 +61,7 @@ const Page = () => {
 										<b>Qualification</b>
 									</p>
 									<p>
-										<small>Champions Leage</small>
+										<small>Champions League</small>
 									</p>
 								</div>
 							</div>
@@ -101,7 +71,7 @@ const Page = () => {
 
 						<div className="flex mt-5 items-center border rounded-md p-2 justify-between relative h-[50px]">
 							<div className="flex gap-4 h-full items-center">
-								<div className="w-2 rounded-r-lg bg-orange-500 h-[90%] " />
+								<div className="w-2 rounded-r-lg bg-orange-500 h-[90%]" />
 								<div className="flex flex-col justify-between text-[18px]">
 									61&apos;
 								</div>
