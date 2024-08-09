@@ -27,8 +27,8 @@ const AuthGuard: FC<PropsWithChildren> = ({ children }) => {
 	}, [router, token]);
 
 	return (
-		<div className="flex bg-gray-100 min-h-screen justify-end">
-			<main className={`w-full min-h-screen mt-14 p-6 bg-gray-100`}>
+		<div className="flex  justify-end">
+			<main className={`w-full mt-14 p-6 `}>
 				{token && <Header />}
 				{children}
 			</main>

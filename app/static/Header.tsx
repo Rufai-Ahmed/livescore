@@ -1,21 +1,11 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { useProfileQuery } from "@/public/utils/authApi";
 import { usePathname } from "next/navigation";
+import { useLoginMutation } from "@/public/utils/authApi";
 
 const Header = () => {
-	const { data, isLoading, error } = useProfileQuery();
 	const path = usePathname();
-
-	if (isLoading)
-		return (
-			<div className="w-full blur-lg h-screen fixed flex items-center justify-center">
-				<div className="loading loading-spinner" />
-			</div>
-		);
-
-	console.log(data, error);
 
 	if (path.includes("dashboard")) return null;
 

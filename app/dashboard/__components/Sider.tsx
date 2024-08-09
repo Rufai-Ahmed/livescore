@@ -1,11 +1,17 @@
 import React from "react";
 import { AiOutlineBell, AiOutlineDashboard } from "react-icons/ai";
-import { BsCurrencyDollar } from "react-icons/bs";
+import { BiShield } from "react-icons/bi";
+import { BsCurrencyDollar, BsPeople } from "react-icons/bs";
+import { CiMedal } from "react-icons/ci";
+import { GiDrawbridge, GiField, GiSoccerKick } from "react-icons/gi";
 import { IoMdPeople } from "react-icons/io";
+import { MdWatch } from "react-icons/md";
+import { RiTeamLine } from "react-icons/ri";
+import { TbMessageCircleQuestion } from "react-icons/tb";
 
 const Sider = () => {
 	return (
-		<div className=" h-screen md:block fixed top-0 left-0 bg-orange-400 w-64 p-6 z-10 hidden">
+		<div className=" h-screen md:block fixed top-0 left-0 bg-[#F73C46] w-64 p-6 z-10 hidden">
 			<div className="flex flex-col items-center">
 				<div className="flex items-center justify-center mb-8">
 					<img
@@ -29,7 +35,7 @@ const Sider = () => {
 				<ul>
 					<li className="mb-6">
 						<a
-							href="#"
+							href="/dashboard"
 							className="flex items-center text-white hover:text-gray-300"
 						>
 							<AiOutlineDashboard className="mr-3 text-xl" />
@@ -38,11 +44,29 @@ const Sider = () => {
 					</li>
 					<li className="mb-6">
 						<a
-							href="#"
+							href="/dashboard/player"
 							className="flex items-center text-white hover:text-gray-300"
 						>
-							<BsCurrencyDollar className="mr-3 text-xl" />
-							Daily Games
+							<BsPeople className="mr-3 text-xl" />
+							Player
+						</a>
+					</li>
+					<li className="mb-6">
+						<a
+							href="/dashboard/match"
+							className="flex items-center text-white hover:text-gray-300"
+						>
+							<GiField className="mr-3 text-xl" />
+							Match
+						</a>
+					</li>
+					<li className="mb-6">
+						<a
+							href="/dashboard/team"
+							className="flex items-center text-white hover:text-gray-300"
+						>
+							<RiTeamLine className="mr-3 text-xl" />
+							Team
 						</a>
 					</li>
 					<li className="mb-6">
@@ -50,25 +74,7 @@ const Sider = () => {
 							href="#"
 							className="flex items-center text-white hover:text-gray-300"
 						>
-							<BsCurrencyDollar className="mr-3 text-xl" />
-							Henado Professional League
-						</a>
-					</li>
-					<li className="mb-6">
-						<a
-							href="#"
-							className="flex items-center text-white hover:text-gray-300"
-						>
-							<BsCurrencyDollar className="mr-3 text-xl" />
-							Henado Champions League
-						</a>
-					</li>
-					<li className="mb-6">
-						<a
-							href="#"
-							className="flex items-center text-white hover:text-gray-300"
-						>
-							<BsCurrencyDollar className="mr-3 text-xl" />
+							<BiShield className="mr-3 text-xl" />
 							Henado Community Shield
 						</a>
 					</li>
@@ -77,7 +83,7 @@ const Sider = () => {
 							href="#"
 							className="flex items-center text-white hover:text-gray-300"
 						>
-							<BsCurrencyDollar className="mr-3 text-xl" />
+							<GiSoccerKick className="mr-3 text-xl" />
 							Custom Competitions
 						</a>
 					</li>
@@ -86,7 +92,7 @@ const Sider = () => {
 							href="#"
 							className="flex items-center text-white hover:text-gray-300"
 						>
-							<BsCurrencyDollar className="mr-3 text-xl" />
+							<CiMedal className="mr-3 text-xl" />
 							Hall of Fame
 						</a>
 					</li>

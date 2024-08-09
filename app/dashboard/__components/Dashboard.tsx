@@ -3,6 +3,12 @@
 import React, { useState } from "react";
 import { BiTrendingUp, BiDotsVerticalRounded } from "react-icons/bi";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import {
+	Carousel,
+	CarouselContent,
+	CarouselItem,
+} from "@/components/ui/carousel";
+import { useGetSessionsQuery } from "@/public/utils/authApi";
 
 interface CardProps {
 	title: string;
@@ -71,11 +77,12 @@ const Dashboard: React.FC = () => {
 			reader.readAsDataURL(file);
 		}
 	};
+	const { data: sessions, refetch } = useGetSessionsQuery();
 
 	return (
-		<div className="lg:w-[calc(100%-0px)] w-full">
+		<div className="lg:w-[calc(100%-0px)] w-full mt-10">
 			{/* Header section */}
-			<div className="flex justify-between items-center mb-6">
+			<div className="flex justify-center items-center mb-6 flex-col">
 				<h1 className="text-2xl font-bold">HENADO PLAY ARENA</h1>
 				<img
 					src="https://via.placeholder.com/150"
@@ -85,35 +92,39 @@ const Dashboard: React.FC = () => {
 			</div>
 
 			{/* Match info section */}
-			<div className="bg-gradient-to-r from-blue-500 to-red-500 rounded-lg p-4 text-red-200">
-				<div className="flex justify-between items-center">
-					<div className="text-center">
-						<img
-							src="https://via.placeholder.com/100"
-							alt="Henado FC"
-							className="mx-auto mb-2"
-						/>
-						<h2 className="text-xl font-semibold">HENADO FC</h2>
-						<p>Isaac A. ⚽ 6&apos;</p>
-						<p>Isaac A. ⚽ 6&apos;</p>
-					</div>
+			{
+				<div className="bg-gradient-to-r from-blue-500 to-red-500 rounded-lg p-4 text-red-200 w-4/5 mx-auto h-[300px]">
+					<div className="flex justify-between items-center">
+						<div className="text-center">
+							<img
+								src="https://via.placeholder.com/100"
+								alt="Henado FC"
+								className="mx-auto mb-2"
+							/>
+							<h2 className="text-xl font-semibold">HENADO FC</h2>
+							<p>Isaac A. ⚽ 6&apos;</p>
+							<p>Isaac A. ⚽ 6&apos;</p>
+						</div>
 
-					<div className="flex flex-col justify-center text-center">
-						<h1 className="text-4xl font-bold">2 - 1</h1>
-						<p>Monday | 5 Aug. 2024 | 5:00 PM</p>
-					</div>
+						<div className="flex flex-col justify-center text-center">
+							<h1 className="text-4xl font-bold">2 - 1</h1>
+							<p>Monday | 5 Aug. 2024 | 5:00 PM</p>
+						</div>
 
-					<div className="text-center">
-						<img
-							src="https://via.placeholder.com/100"
-							alt="Green Henado FC"
-							className="mx-auto mb-2"
-						/>
-						<h2 className="text-xl font-semibold">GREEN HENADO FC</h2>
-						<p>James Z. ⚽ 8&apos;</p>
+						<div className="text-center">
+							<img
+								src="https://via.placeholder.com/100"
+								alt="Green Henado FC"
+								className="mx-auto mb-2"
+							/>
+							<h2 className="text-xl font-semibold">
+								GREEN HENADO FC
+							</h2>
+							<p>James Z. ⚽ 8&apos;</p>
+						</div>
 					</div>
 				</div>
-			</div>
+			}
 
 			{/* Card section */}
 			<div className="grid grid-cols-4 space-y-4 gap-4 mt-6">
@@ -177,12 +188,12 @@ const Dashboard: React.FC = () => {
 						<h1 className="font-medium text-[25px]">
 							Next Team to Play
 						</h1>
-						<button
+						{/* <button
 							onClick={handleAddTeam}
 							className="text-[14px] py-2 px-4 text-white font-medium bg-red-500 rounded-md shadow-lg"
 						>
 							+ Add New Team
-						</button>
+						</button> */}
 					</div>
 					<p className="text-sm text-gray-500 mb-4">
 						If a team is not available to play, they will be moved 1
