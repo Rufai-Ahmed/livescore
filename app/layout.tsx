@@ -12,33 +12,33 @@ import Header from "./static/Header";
 const quick = Quicksand({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Go Market",
-  description: "Revolutionizing food shopping",
+	title: "Go Market",
+	description: "Revolutionizing food shopping",
 };
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body className={quick.className}>
-        <StoreProvider>
-          <AuthGuard>
-            <ToastContainer
-              position="top-right"
-              autoClose={5000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              theme="light"
-            />
+	return (
+		<html lang="en">
+			<body className={quick.className}>
+				<StoreProvider>
+					<AuthGuard>
+						<ToastContainer
+							position="top-right"
+							autoClose={5000}
+							hideProgressBar={false}
+							newestOnTop={false}
+							closeOnClick
+							theme="light"
+						/>
 
-            {children}
-          </AuthGuard>
-        </StoreProvider>
-      </body>
-    </html>
-  );
+						{children}
+					</AuthGuard>
+				</StoreProvider>
+			</body>
+		</html>
+	);
 }
