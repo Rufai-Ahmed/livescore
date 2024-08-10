@@ -6,6 +6,7 @@ import {
 } from "@/public/utils/authApi";
 import Modal from "./__components/Modal";
 import React, { useState, useMemo } from "react";
+import { Check } from "lucide-react";
 
 const PlayersPage = () => {
   const { data: players = [], isLoading } = useGetPlayersQuery();
@@ -15,6 +16,8 @@ const PlayersPage = () => {
     useState<boolean>(false);
   const [showPaymentHistoryModal, setShowPaymentHistoryModal] =
     useState<boolean>(false);
+  const [showAllPaymentsModal, setShowAllPaymentsModal] =
+    useState<boolean>(false); // State for all payments history modal
   const [createPayment] = useCreatePaymentMutation();
   const { data: payments } = useGetPaymentsQuery();
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -37,7 +40,7 @@ const PlayersPage = () => {
 
   const paymentsToday = payments?.filter(
     (payment: any) =>
-      new Date(payment.session).toDateString() === new Date().toDateString()
+      new Date(payment?.session).toDateString() === new Date().toDateString()
   );
 
   // Filter players based on the search term
@@ -50,16 +53,22 @@ const PlayersPage = () => {
   // Filter payment history for the selected player
   const paymentHistory = useMemo(() => {
     return payments?.filter(
-      (payment: any) => payment.player._id === selectedPlayer?._id
+      (payment: any) => payment?.player?._id === selectedPlayer?._id
     );
   }, [payments, selectedPlayer]);
+
+  // Determine if a player has paid today
+  const hasPaidToday = (playerId: string) => {
+    return paymentsToday?.some(
+      (payment: any) => payment?.player?._id === playerId
+    );
+  };
 
   if (isLoading) return <div>Loading...</div>;
 
   return (
     <div>
       {/* Search Input */}
-
       <div className="flex items-center flex-wrap gap-4">
         <label className="input input-bordered flex items-center gap-2 mb-4">
           <input
@@ -89,7 +98,16 @@ const PlayersPage = () => {
         >
           View Payment History
         </button>
+
+        {/* Button to view all payments history */}
+        <button
+          className="btn btn-tertiary mb-4"
+          onClick={() => setShowAllPaymentsModal(true)}
+        >
+          View All Payments History
+        </button>
       </div>
+
       {/* Table of players */}
       {isLoading && <p>Loading...</p>}
       <div className="w-[calc(100vw-10px)] md:w-auto overflow-x-auto">
@@ -133,15 +151,21 @@ const PlayersPage = () => {
                 <td>{player?.club?.name}</td>
                 <td>{player?.phoneNumber}</td>
                 <th>
-                  <button
-                    className="btn btn-ghost btn-xs"
-                    onClick={() => {
-                      setSelectedPlayer(player);
-                      setShowPaymentModal(true);
-                    }}
-                  >
-                    Make Payment
-                  </button>
+                  {hasPaidToday(player._id) ? (
+                    <button className="btn btn-success btn-xs" disabled>
+                      Paid Today
+                    </button>
+                  ) : (
+                    <button
+                      className="btn btn-ghost btn-xs"
+                      onClick={() => {
+                        setSelectedPlayer(player);
+                        setShowPaymentModal(true);
+                      }}
+                    >
+                      Make Payment
+                    </button>
+                  )}
                 </th>
               </tr>
             ))}
@@ -175,10 +199,10 @@ const PlayersPage = () => {
         <Modal onClose={() => setShowPaymentsTodayModal(false)}>
           <h2>Payments for Today</h2>
           <ul>
-            {paymentsToday.length > 0 ? (
-              paymentsToday.map((payment: any) => (
-                <li key={payment._id}>
-                  {payment.player.username} - ${payment.amount}
+            {paymentsToday?.length > 0 ? (
+              paymentsToday?.map((payment: any) => (
+                <li key={payment?._id}>
+                  {payment?.player.username} - ${payment?.amount}
                 </li>
               ))
             ) : (
@@ -193,11 +217,30 @@ const PlayersPage = () => {
         <Modal onClose={() => setShowPaymentHistoryModal(false)}>
           <h2>Payment History for {selectedPlayer.username}</h2>
           <ul>
-            {paymentHistory.length > 0 ? (
-              paymentHistory.map((payment: any) => (
-                <li key={payment._id}>
-                  {new Date(payment.session).toLocaleDateString()} - $
-                  {payment.amount}
+            {paymentHistory?.length > 0 ? (
+              paymentHistory?.map((payment: any) => (
+                <li key={payment?._id}>
+                  {new Date(payment?.session).toLocaleDateString()} -{" "}
+                  <Check size={20} color="green" />
+                </li>
+              ))
+            ) : (
+              <li>No payment history available</li>
+            )}
+          </ul>
+        </Modal>
+      )}
+
+      {/* All Payments History Modal */}
+      {showAllPaymentsModal && (
+        <Modal onClose={() => setShowAllPaymentsModal(false)}>
+          <h2>All Payments History</h2>
+          <ul>
+            {payments?.length > 0 ? (
+              payments?.map((payment: any) => (
+                <li key={payment?._id}>
+                  {payment?.player.username} - ${payment?.amount} -{" "}
+                  {new Date(payment?.session).toLocaleDateString()}
                 </li>
               ))
             ) : (
