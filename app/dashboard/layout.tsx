@@ -10,23 +10,23 @@ import Sider from "./__components/Sider";
 const quick = Quicksand({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-	title: "Go Market",
-	description: "Revolutionizing food shopping",
+  title: "Livescore Board",
+  description: "Revolutionizing the board",
 };
 
 export default function RootLayout({
-	children,
+  children,
 }: Readonly<{
-	children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-	return (
-		<html lang="en">
-			<body className={quick.className}>
-				<div className=" flex">
-					<Sider />
-					<div className="flex-1 md:ml-64 p-3">{children}</div>
-				</div>
-			</body>
-		</html>
-	);
+  return (
+    <html lang="en">
+      <body className={quick.className}>
+        <div className=" flex">
+          <Sider />
+          <div className="flex-1 md:ml-64 p-3">{children}</div>
+        </div>
+      </body>
+    </html>
+  );
 }
