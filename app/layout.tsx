@@ -12,8 +12,8 @@ import Header from "./static/Header";
 const quick = Quicksand({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-	title: "Go Market",
-	description: "Revolutionizing food shopping",
+	title: "Livescore",
+	description: "Revolutionizing Online Scoreboard",
 };
 
 export default function RootLayout({

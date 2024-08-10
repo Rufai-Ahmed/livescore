@@ -7,8 +7,10 @@ import {
 import Modal from "./__components/Modal";
 import React, { useState, useMemo } from "react";
 import { Check } from "lucide-react";
+import useRouter from "next/router/navigation";
 
 const PlayersPage = () => {
+  const router = useRouter();
   const { data: players = [], isLoading } = useGetPlayersQuery();
   const [selectedPlayer, setSelectedPlayer] = useState<any>(null);
   const [showPaymentModal, setShowPaymentModal] = useState<boolean>(false);
@@ -102,7 +104,7 @@ const PlayersPage = () => {
         {/* Button to view all payments history */}
         <button
           className="btn btn-tertiary mb-4"
-          onClick={() => setShowAllPaymentsModal(true)}
+          onClick={() => router.push("/dashboard/payment/allpaymenthistory")} // Navigate to the new page
         >
           View All Payments History
         </button>
