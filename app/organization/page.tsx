@@ -5,7 +5,7 @@ import TableRow from "./TableRow";
 import MemberModal from "./MembersModal";
 import { useGetOrganizationQuery } from "@/public/utils/organizationApi";
 
-const page = () => {
+const Page = () => {
   const { data: getOrganizations, isLoading } = useGetOrganizationQuery();
 
   if (isLoading)
@@ -46,4 +46,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
