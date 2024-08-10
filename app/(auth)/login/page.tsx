@@ -45,7 +45,7 @@ const Login = ({ setStage }: any) => {
 		try {
 			const userData = await login(data).unwrap();
 			dispatch(setToken(userData));
-			localStorage.setItem("token ", JSON.stringify(userData));
+			localStorage.setItem("token", JSON.stringify(userData));
 			toast.success("Admin Logged in Successfully");
 			setIsLoading(false);
 			router.push("/");
