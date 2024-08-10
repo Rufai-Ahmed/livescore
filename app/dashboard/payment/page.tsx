@@ -7,7 +7,7 @@ import {
 import Modal from "./__components/Modal";
 import React, { useState, useMemo } from "react";
 import { Check } from "lucide-react";
-import useRouter from "next/router/navigation";
+import { useRouter } from "next/navigation";
 
 const PlayersPage = () => {
   const router = useRouter();

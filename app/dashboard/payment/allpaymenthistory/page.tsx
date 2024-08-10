@@ -15,20 +15,24 @@ const AllPaymentsHistoryPage = () => {
     return acc;
   }, {});
 
+  console.log(payments);
   if (isLoading) return <div>Loading...</div>;
 
   return (
     <div>
       <h1>All Payments History</h1>
       <div className="space-y-4">
-        {Object.entries(groupedPayments).map(([date, payments]) => (
+        {Object.entries(groupedPayments).map(([date, payments]: any) => (
           <div key={date} className="border border-gray-300 p-4 rounded-lg">
             <h2 className="text-xl font-bold">{date}</h2>
             <ul className="mt-2">
-              {payments.map((payment: any) => (
-                <li key={payment._id} className="flex items-center justify-between p-2 border-b">
-                  <span>{payment.player.username}</span>
-                  <span>${payment.amount}</span>
+              {payments?.map((payment: any) => (
+                <li
+                  key={payment?._id}
+                  className="flex items-center justify-between p-2 border-b"
+                >
+                  <span>{payment?.player?.username}</span>
+                  <span>${payment?.amount}</span>
                 </li>
               ))}
             </ul>
