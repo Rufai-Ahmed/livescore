@@ -78,7 +78,7 @@ const Dashboard: React.FC = () => {
   const { data: sessions, isLoading } = useGetSessionsQuery();
 
   if (!isLoading)
-    console.log(sessions, moment(sessions[0].startTime).format("LLLL"));
+    console.log(sessions, moment(sessions[0]?.startTime).format("LLLL"));
 
   const testData = [
     {
