@@ -3,10 +3,10 @@ import { useGetPaymentsQuery } from "@/public/utils/authApi";
 import React from "react";
 
 const AllPaymentsHistoryPage = () => {
-  const { data: payments, isLoading } = useGetPaymentsQuery();
+  const { data: payments = [], isLoading }: any = useGetPaymentsQuery();
 
   // Group payments by date
-  const groupedPayments = payments?.reduce((acc: any, payment: any) => {
+  const groupedPayments: any = payments?.reduce((acc: any, payment: any) => {
     const date = new Date(payment?.session).toDateString();
     if (!acc[date]) {
       acc[date] = [];
