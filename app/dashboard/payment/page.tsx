@@ -8,9 +8,9 @@ import Modal from "./__components/Modal";
 import React, { useState, useMemo } from "react";
 import { Check } from "lucide-react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const PlayersPage = () => {
-  const router = useRouter();
   const { data: players = [], isLoading } = useGetPlayersQuery();
   const [selectedPlayer, setSelectedPlayer] = useState<any>(null);
   const [showPaymentModal, setShowPaymentModal] = useState<boolean>(false);
@@ -102,12 +102,11 @@ const PlayersPage = () => {
         </button>
 
         {/* Button to view all payments history */}
-        <button
-          className="btn btn-tertiary mb-4"
-          onClick={() => router.push("/dashboard/payment/allpaymenthistory")} // Navigate to the new page
-        >
-          View All Payments History
-        </button>
+        <Link href="/dashboard/payment/allpaymenthistory">
+          <button className="btn btn-tertiary mb-4">
+            View All Payments History
+          </button>
+        </Link>
       </div>
 
       {/* Table of players */}
